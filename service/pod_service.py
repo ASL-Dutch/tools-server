@@ -15,7 +15,7 @@ from service.ups_pod import UpsPod
 env = (sys.argv[1] if len(sys.argv) > 2 else os.getenv("PYTHON_ENV")).upper()
 
 POD_PATH = '/mnt/static/warehouse/pod/YEAR/PATH/'
-BODY_PATH = '../ups-body.xml' if 'DEV' == env else '/data/logistics-information/ups-body.xml'
+BODY_PATH = '/home/tools-server/ups-body.xml' if 'DEV' == env else '/data/tools-server/ups-body.xml'
 ZIP_CMD = 'zip -jr /mnt/static/warehouse/pod/YEAR/PATH/FILENAME.zip /mnt/static/warehouse/pod/YEAR/PATH/'
 ZIP_PATH = '/mnt/static/warehouse/pod/YEAR/PATH/FILENAME.zip'
 POD_FILE_URI_HOST = 'http://resource.y-clouds.com/' if env == 'DEV' \
