@@ -42,17 +42,16 @@ def async_pull_pod(file, log, remark):
 
     filename = 'POD_' + time.strftime("%y%m%d", time.localtime()) + ''.join(random.sample(string.ascii_letters, 6))
     print('filename', filename)
+    p_path = POD_PATH.replace('YEAR', str(year)).replace('PATH', filename)
 
     # 各自拉取pod
-    dpd_pull = DpdPod(dpd, log, filename)
+    dpd_pull = DpdPod(dpd, log, p_path)
     dpd_res = dpd_pull.pull_pod()
 
-    ups_pull = UpsPod(ups, log, BODY_PATH, filename)
+    ups_pull = UpsPod(ups, log, BODY_PATH, p_path)
     ups_res = ups_pull.pull_pod()
 
     # 拉取完毕 执行压缩命令
-    filename = 'POD_' + time.strftime("%y%m%d", time.localtime()) + ''.join(random.sample(string.ascii_letters, 6))
-    print('filename', filename)
     print('year', year)
     cmd = ZIP_CMD.replace('YEAR', str(year)) \
         .replace('PATH', filename) \

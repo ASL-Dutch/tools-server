@@ -43,7 +43,7 @@ class UploadHandler(RequestHandler):
 
         file_list = files['file']
         # 异步进行pod拉取
-        pod_thread = threading.Thread(target=async_pull_pod, args=(file_list, log, remark, cid))
+        pod_thread = threading.Thread(target=async_pull_pod, args=(file_list, log, remark))
         pod_thread.start()
         self.write("request success.")
 

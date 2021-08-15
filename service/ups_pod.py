@@ -78,7 +78,6 @@ class UpsPod:
         json_i = json.loads(dic)
         print(json_i)
         try:
-            l_list = []
             activity_list = json_i['TrackResponse']['Shipment']['Package']['Activity']
             if type(activity_list) == list:
                 for i in range(0, len(activity_list)):
