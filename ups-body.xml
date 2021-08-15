@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<AccessRequest xml:lang="en-US">
+    <AccessLicenseNumber>ACCESS_LICENSE_NUMBER</AccessLicenseNumber>
+    <UserId>USER_ID</UserId>
+    <Password>PASSWORD</Password>
+</AccessRequest>
+<?xml version="1.0"?>
+<TrackRequest xml:lang="en-US">
+    <Request>
+        <TransactionReference>
+            <CustomerContext>Logistics</CustomerContext>
+        </TransactionReference>
+        <RequestAction>Track</RequestAction>
+        <RequestOption>3</RequestOption>
+    </Request>
+    <TrackingNumber>TRACKING_NUMBER</TrackingNumber>
+</TrackRequest>
