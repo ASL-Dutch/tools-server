@@ -16,7 +16,7 @@ from util.logger import Logger
 import sys
 
 # 根据环境变量设置日志
-env = (sys.argv[1] if len(sys.argv) > 2 else os.getenv("PYTHON_ENV")).upper()
+env = os.getenv("PYTHON_ENV").upper()
 
 LOG_PATH = '/var/log/py/tools_server.log'
 LOG_LEVEL = os.getenv("PYTHON_LOG_LEVEL") or 'debug'
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     app = Application([(r'/', IndexHandler),
                        (r'/upload', UploadHandler)])
     tornado.options.parse_command_line()
-    print('EUREKA_HOST',EUREKA_HOST)
+    print('EUREKA_HOST', EUREKA_HOST)
 
     eureka_client.init(eureka_server=EUREKA_HOST,
                        app_name='py-tools-server',
@@ -63,4 +63,4 @@ if __name__ == '__main__':
     http_server.start(1)
     print('tools-server start ..')
     # 启动IOLoop轮循监听
-    IOLoop.current().start()
+    IOLoop.instance().start()
