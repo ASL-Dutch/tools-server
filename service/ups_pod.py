@@ -14,7 +14,7 @@ from util.logger import Logger
 # ups 请求获取物流信息的接口
 post_request_api = 'https://onlinetools.ups.com/ups.app/xml/Track'
 # 根据环境变量设置日志
-env = (sys.argv[1] if len(sys.argv) > 2 else os.getenv("PYTHON_ENV")).upper()
+env = os.getenv("PYTHON_ENV").upper()
 
 ups, dpd = account()
 
