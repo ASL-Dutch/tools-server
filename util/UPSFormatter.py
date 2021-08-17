@@ -10,10 +10,8 @@ import none
 from util.image import base64_to_html
 from util.letter import id_generator, transfer_content
 
-env = (sys.argv[1] if len(sys.argv) > 2 else os.getenv("PYTHON_ENV")).upper()
 # pod 保存路径
 TMP_HTML_PATH = '/mnt/static/warehouse/pod'
-
 
 # cut pod image command
 HTML_TO_IMAGE_COMMAND = 'wkhtmltopdf --page-size A6 --enable-local-file-access HTML_PATH  PDF_PATH'

@@ -12,7 +12,7 @@ from service.dpd_pod import DpdPod
 from service.ups_pod import UpsPod
 
 # 根据环境变量设置日志
-env = (sys.argv[1] if len(sys.argv) > 2 else os.getenv("PYTHON_ENV")).upper()
+env = os.getenv("PYTHON_ENV").upper()
 
 POD_PATH = '/mnt/static/warehouse/pod/YEAR/PATH/'
 BODY_PATH = '/home/tools-server/ups-body.xml' if 'DEV' == env else '/data/tools-server/ups-body.xml'
