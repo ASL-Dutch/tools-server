@@ -62,7 +62,7 @@ def async_pull_pod(file, log, remark):
         .replace('YEAR', str(year)) \
         .replace('PATH', filename) \
         .replace('FILENAME', filename)
-    if cmd_res:
+    if cmd_res == 0:
         # 保存zip 到db
         in_sql = "insert into tools_pod_log(pod_Id, remark, url) values ('%s', '%s', '%s')" % (
             filename, remark, zip_path)
