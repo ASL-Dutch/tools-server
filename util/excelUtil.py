@@ -70,7 +70,6 @@ def read_excel_pandas_by_byte(f_byte: bytes):
             num += 1
 
             line.append(df.iloc[iRow, iCol])
-            print(df.iloc[iRow, iCol])
             if num % cols == 0:
                 all_line.append(line)
                 line = []

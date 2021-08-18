@@ -38,8 +38,6 @@ class UploadHandler(RequestHandler):
     def post(self):
         files = self.request.files
         remark = self.get_argument('remark')
-        up_headers = self.request.headers
-        cid = up_headers.get('cid')
 
         file_list = files['file']
         # 异步进行pod拉取

@@ -27,23 +27,36 @@ class DpdPod:
         count = 0
 
         for tracking_no in data:
+
+            if not str(tracking_no).startswith('0'):
+                tracking_no = '0' + str(tracking_no)
+            else:
+                tracking_no = str(tracking_no)
+
             url = pod_url.replace('TRACKING_NO', tracking_no)
             res = get_request(url)
+            print(tracking_no + ':' + res)
+
             if res is not none:
-                js = json.loads(res)
-                link = self.get_dpd_pod_link(js)
-                print(link)
-                if link is not None:
-                    d_res = self.download_pod(link, tracking_no)
-                    if d_res:
-                        count += 1
+                try:
+                    js = json.loads(res)
+                    link = self.get_dpd_pod_link(js)
+                    print(link)
+                    if link is not None:
+                        d_res = self.download_pod(link, tracking_no)
+                        if d_res:
+                            count += 1
+                        else:
+                            log.error("%s has link but cannot download" % tracking_no)
+                            log.error("%s link: %s" % (tracking_no, link))
                     else:
-                        log.error("%s has link but cannot download" % tracking_no)
-                        log.error("%s link: %s" % (tracking_no, link))
-                else:
+                        log.error("%s can not get pod link" % tracking_no)
+                except:
                     log.error("%s can not get pod link" % tracking_no)
+                    log.error(traceback.format_exc())
+                    pass
             else:
-                log.error("%s request dpd failed" % tracking_no)
+                log.error("%s request dpd failed" % str(tracking_no))
         return count
 
     def get_dpd_pod_link(self, js):
